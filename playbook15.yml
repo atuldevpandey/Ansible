@@ -13,4 +13,9 @@
          yum:
            name: tree
            state: present
-           update_cache: yes 
+           update_cache: yes
+      always:
+       - name: Display success info
+         debug:
+           msg: "Tree installation successfull"
+...             

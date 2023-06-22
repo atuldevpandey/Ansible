@@ -1,0 +1,17 @@
+---
+- name: Delete file if it has execute permissions
+  hosts: all
+  tasks:
+    - name: Capture info about file
+      stat:
+        path: /tmp/file1
+      register: a
+    - name: Display output of the above module
+      debug: 
+        var: a
+    - name: Delete file if it has execute permissions
+      file: 
+        name: /tmp/file1
+        state: absent
+      when: a.stat.executable == true     
+...
